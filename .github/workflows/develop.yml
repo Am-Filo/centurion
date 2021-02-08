@@ -72,12 +72,6 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    env:
-      DP_host: ${{ secrets.DEPLOY_TEST_HOST }}
-      DP_port: ${{ secrets.DEPLOY_TEST_PORT }}
-      DP_user: ${{ secrets.DEPLOY_TEST_USER }}
-      DP_key: ${{ secrets.DEPLOY_TEST_KEY }}
-      DP_path: ${{ secrets.DEPLOY_TEST_PATH }}
     steps:
       - name: Download project
         uses: actions/download-artifact@v2
@@ -86,6 +80,12 @@ jobs:
       - name: ls
         run: ls
       - name: Deploying to server
+        with:
+          DP_host: ${{ secrets.DEPLOY_TEST_HOST }}
+          DP_port: ${{ secrets.DEPLOY_TEST_PORT }}
+          DP_user: ${{ secrets.DEPLOY_TEST_USER }}
+          DP_key: ${{ secrets.DEPLOY_TEST_KEY }}
+          DP_path: ${{ secrets.DEPLOY_TEST_PATH }}
         uses: burnett01/rsync-deployments@4.1
         with:
           switches: ${{ secrets.DEPLOY_TEST_SWITCHES }}
