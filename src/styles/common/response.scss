@@ -1,16 +1,5 @@
 /************  The Network  ************/
 @media (max-width: 1800px) {
-  // .itemslide,
-  .slick-slide {
-    &:last-child {
-      .slideproto {
-        .textslidebox {
-          padding-left: 65px;
-        }
-      }
-    }
-  }
-
   .textslidebox {
     .slidename {
       font-size: 16px;
@@ -18,6 +7,16 @@
 
     .busbtn {
       font-size: 12px;
+    }
+  }
+
+  .slick-slide {
+    &:last-child {
+      .slideproto {
+        .textslidebox {
+          padding-left: 65px;
+        }
+      }
     }
   }
 
@@ -76,7 +75,28 @@
   .slick-track {
     left: 0 !important;
   }
-  // .itemslide,
+
+  .imagerectbox {
+    min-height: 400px;
+    position: relative;
+    width: auto;
+    left: 0;
+    transform: skew(0);
+  }
+
+  .slideproto {
+    min-height: auto;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .textslidebox {
+    bottom: 50px;
+    transform: skew(0);
+  }
+
   .slick-slide {
     .slideproto {
       .textslidebox {
@@ -113,27 +133,6 @@
     }
   }
 
-  .imagerectbox {
-    min-height: 400px;
-    position: relative;
-    width: auto;
-    left: 0;
-    transform: skew(0);
-  }
-
-  .slideproto {
-    min-height: auto;
-
-    &::after {
-      display: none;
-    }
-  }
-
-  .textslidebox {
-    bottom: 50px;
-    transform: skew(0);
-  }
-
   .slidermainproto {
     // .itemslide,
     .slick-slide {
@@ -147,6 +146,11 @@
 }
 
 @media (max-width: 1023px) {
+  .busineitemname {
+    min-height: initial;
+    font-size: 24px;
+  }
+
   .ourbusinesmain {
     padding-top: 20px;
 
@@ -155,6 +159,15 @@
         display: none;
       }
     }
+  }
+
+  .ourbusinesmaintext {
+    display: none;
+  }
+
+  .businesgrid {
+    grid-template-columns: 1fr;
+    grid-gap: 50px 0;
   }
 
   .cftextsection4 {
@@ -184,8 +197,10 @@
     }
   }
 
-  .ourbusinesmaintext {
-    display: none;
+  .advsection2 {
+    .titlesection {
+      font-size: 24px;
+    }
   }
 
   .advantagescenturion {
@@ -208,11 +223,6 @@
     }
   }
 
-  .businesgrid {
-    grid-template-columns: 1fr;
-    grid-gap: 50px 0;
-  }
-
   .busineitem {
     max-width: 400px;
     margin: 0 auto;
@@ -221,11 +231,6 @@
 
   .specmaincover {
     box-shadow: 0 55px 60px rgba(24, 51, 139, 0.01);
-  }
-
-  .busineitemname {
-    min-height: initial;
-    font-size: 24px;
   }
 
   .busineitemtext {
@@ -276,12 +281,6 @@
     }
   }
 
-  .advsection2 {
-    .titlesection {
-      font-size: 24px;
-    }
-  }
-
   .logofirstbox {
     font-size: 28px;
     line-height: 34px;
@@ -313,6 +312,14 @@
 
     font-size: 16px;
     line-height: 20px;
+  }
+
+  .cftextsection3text {
+    font-size: 16px;
+
+    h2 {
+      font-size: 24px;
+    }
   }
 
   .cftextsection2 {
@@ -351,14 +358,6 @@
       font-size: 14px;
       line-height: 17px;
       text-align: justify;
-    }
-  }
-
-  .cftextsection3text {
-    font-size: 16px;
-
-    h2 {
-      font-size: 24px;
     }
   }
 
