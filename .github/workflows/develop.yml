@@ -72,7 +72,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    strategy:
+    env:
       matrix:
         host: ${{ secrets.DEPLOY_TEST_HOST }}
         port: ${{ secrets.DEPLOY_TEST_PORT }}
