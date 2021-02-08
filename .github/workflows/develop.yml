@@ -82,15 +82,10 @@ jobs:
       - name: Deploying to server
         uses: burnett01/rsync-deployments@4.1
         with:
-          DP_host: ${{ secrets.DEPLOY_TEST_HOST }}
-          DP_port: ${{ secrets.DEPLOY_TEST_PORT }}
-          DP_user: ${{ secrets.DEPLOY_TEST_USER }}
-          DP_key: ${{ secrets.DEPLOY_TEST_KEY }}
-          DP_path: ${{ secrets.DEPLOY_TEST_PATH }}
           switches: ${{ secrets.DEPLOY_TEST_SWITCHES }}
           path: ./${{ secrets.PROJECT_BUILD_NAME }}/
-          remote_path: ${{ DP_path }}/${{ secrets.PROJECT_BUILD_NAME }}
-          remote_host: ${{ DP_host }}
-          remote_port: ${{ DP_port }}
-          remote_user: ${{ DP_user }}
-          remote_key: ${{ DP_key }}
+          remote_path: ${{ secrets.DEPLOY_TEST_PATH }}/${{ secrets.PROJECT_BUILD_NAME }}
+          remote_host: ${{ secrets.DEPLOY_TEST_HOST }}
+          remote_port: ${{ secrets.DEPLOY_TEST_PORT }}
+          remote_user: ${{ secrets.DEPLOY_TEST_USER }}
+          remote_key: ${{ secrets.DEPLOY_TEST_KEY }}
