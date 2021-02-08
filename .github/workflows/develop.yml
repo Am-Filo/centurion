@@ -1,13 +1,18 @@
-name: Build Project
+name: Develop Workflow
 on:
   push:
-    branches: [master, develop, feature/**, feature]
-
+    branches: [develop]
+  pull_request:
+    branches: [develop]
   workflow_dispatch:
-
+    inputs:
+      version:
+        description: Node Version
+        default: 12
+        required: true
 jobs:
-  build:
-    name: Build project
+  test:
+    name: Tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,11 +33,59 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install project packages
         run: npm install
-      - name: Build project to production
+      - name: Run tests
+        run: npm run test
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Cache node packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Setup node ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install project packages
+        run: npm install
+      - name: Run tests
+        run: npm run test
+      - name: Build project
         run: npm run build
-      - name: Upload artifacts
+      - name: Upload project
         uses: actions/upload-artifact@v2
         with:
-          name: centurion-build
+          name: ${{ secrets.PROJECT_BUILD_NAME }}
           path: ./build
           retention-days: 1
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download project
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ secrets.PROJECT_BUILD_NAME }}
+      - name: ls
+        run: ls
+      - name: Deploying to server
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: ${{ secrets.DEPLOY_TEST_SWITCHES }}
+          path: ${{ secrets.DEPLOY_TEST_PATH }}
+          remote_path: ${{ secrets.PROJECT_BUILD_NAME }}
+          remote_host: ${{ secrets.DEPLOY_TEST_HOST }}
+          remote_port: ${{ secrets.DEPLOY_TEST_PORT }}
+          remote_user: ${{ secrets.DEPLOY_TEST_USER }}
+          remote_key: ${{ secrets.DEPLOY_TEST_KEY }}
