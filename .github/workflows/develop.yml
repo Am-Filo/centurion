@@ -73,12 +73,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     env:
-      matrix:
-        host: ${{ secrets.DEPLOY_TEST_HOST }}
-        port: ${{ secrets.DEPLOY_TEST_PORT }}
-        user: ${{ secrets.DEPLOY_TEST_USER }}
-        key: ${{ secrets.DEPLOY_TEST_KEY }}
-        path: ${{ secrets.DEPLOY_TEST_PATH }}
+      DP_host: ${{ secrets.DEPLOY_TEST_HOST }}
+      DP_port: ${{ secrets.DEPLOY_TEST_PORT }}
+      DP_user: ${{ secrets.DEPLOY_TEST_USER }}
+      DP_key: ${{ secrets.DEPLOY_TEST_KEY }}
+      DP_path: ${{ secrets.DEPLOY_TEST_PATH }}
     steps:
       - name: Download project
         uses: actions/download-artifact@v2
@@ -90,9 +89,9 @@ jobs:
         uses: burnett01/rsync-deployments@4.1
         with:
           switches: ${{ secrets.DEPLOY_TEST_SWITCHES }}
-          path: ${{ matrix.path }}
-          remote_path: ${{ matrix.path }}/${{ secrets.PROJECT_BUILD_NAME }}
-          remote_host: ${{ matrix.host }}
-          remote_port: ${{ matrix.port }}
-          remote_user: ${{ matrix.user }}
-          remote_key: ${{ matrix.key }}
+          path: ./${{ secrets.PROJECT_BUILD_NAME }}/
+          remote_path: ${{ DP_path }}/${{ secrets.PROJECT_BUILD_NAME }}
+          remote_host: ${{ DP_host }}
+          remote_port: ${{ DP_port }}
+          remote_user: ${{ DP_user }}
+          remote_key: ${{ DP_key }}
