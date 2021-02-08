@@ -73,7 +73,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     strategy:
-      deploy:
+      matrix:
         host: ${{ secrets.DEPLOY_TEST_HOST }}
         port: ${{ secrets.DEPLOY_TEST_PORT }}
         user: ${{ secrets.DEPLOY_TEST_USER }}
@@ -90,9 +90,9 @@ jobs:
         uses: burnett01/rsync-deployments@4.1
         with:
           switches: ${{ secrets.DEPLOY_TEST_SWITCHES }}
-          path: ${{ deploy.path }}
-          remote_path: ${{ deploy.path }}/${{ secrets.PROJECT_BUILD_NAME }}
-          remote_host: ${{ deploy.host }}
-          remote_port: ${{ deploy.port }}
-          remote_user: ${{ deploy.user }}
-          remote_key: ${{ deploy.key }}
+          path: ${{ matrix.path }}
+          remote_path: ${{ matrix.path }}/${{ secrets.PROJECT_BUILD_NAME }}
+          remote_host: ${{ matrix.host }}
+          remote_port: ${{ matrix.port }}
+          remote_user: ${{ matrix.user }}
+          remote_key: ${{ matrix.key }}
