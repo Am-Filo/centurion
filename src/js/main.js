@@ -1,6 +1,3 @@
-// import $ from '../plugins/jquery/dist/jquery.min';
-// import 'slick-carousel';
-
 import $ from "jquery";
 window.$ = window.jQuery = $;
 import "slick-carousel";
@@ -8,9 +5,6 @@ import "slick-carousel";
 import intlTelInput from "intl-tel-input";
 
 $(document).ready(() => {
-  // eslint-disable-next-line no-console
-  console.log(`document ready`);
-
   $(".mobilemenu-toggle").on("click", function () {
     $(this).next(".topmenu").stop().slideToggle();
     $(this).toggleClass("active");
@@ -23,7 +17,7 @@ $(document).ready(() => {
     $(".mobilemenu-toggle").removeClass("active");
   });
 
-  //easy scroll nav
+  // easy scroll nav
   $(".topmenu a, .foottitles a").on("click", function () {
     var hash = this.hash;
     $("html, body").animate(
@@ -36,13 +30,11 @@ $(document).ready(() => {
     return false;
   });
 
-  //Start Slick
-  // if ($().slick) {
+  // start slick
   $(".slidermainproto").slick({
-    infinite: false,
+    infinite: true,
     slidesToShow: 5,
-    speed: 1200,
-
+    speed: 500,
     arrows: false,
     slidesToScroll: 1,
     responsive: [
@@ -55,28 +47,17 @@ $(document).ready(() => {
       },
     ],
   });
-  // }
 
+  // phone input
   if (
     ["/contacts.html", "/contacts", "contacts"].includes(
       window.location.pathname
     )
   ) {
     const input = document.querySelector("#phone");
-
     intlTelInput(input, {
       utilsScript: "../plugins/input-tel/utils.js",
       formatOnDisplay: true,
     });
-
-    // intlTelInput(input, {
-    //   customPlaceholder: function (
-    //     selectedCountryPlaceholder,
-    //     selectedCountryData
-    //   ) {
-    //     return "e.g. " + selectedCountryPlaceholder;
-    //   },
-    //   formatOnDisplay: true,
-    // });
   }
 });
