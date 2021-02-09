@@ -120,12 +120,11 @@ h3 {
     height: 100%;
     mix-blend-mode: normal;
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-    background:
-      radial-gradient(
-        52.31% 50% at 52.31% 50%,
-        #fff 0%,
-        rgba(188, 197, 255, 0.5) 100%
-      );
+    background: radial-gradient(
+      52.31% 50% at 52.31% 50%,
+      #fff 0%,
+      rgba(188, 197, 255, 0.5) 100%
+    );
   }
 }
 
@@ -244,8 +243,7 @@ h3 {
   margin-top: 80px;
 
   .projectcol {
-    background:
-      linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%),
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%),
       #d0e2fe;
     box-shadow: 0 55px 60px rgba(24, 51, 139, 0.12);
     border-radius: 40px;
@@ -318,12 +316,11 @@ h3 {
     top: 0;
     width: 100%;
     height: 100%;
-    background:
-      radial-gradient(
-        111.11% 107.5% at 46.8% 102.95%,
-        #08e 0%,
-        rgba(124, 142, 255, 0) 100%
-      );
+    background: radial-gradient(
+      111.11% 107.5% at 46.8% 102.95%,
+      #08e 0%,
+      rgba(124, 142, 255, 0) 100%
+    );
     transform: matrix(-1, 0, 0, 1, 0, 0);
   }
 }
@@ -617,8 +614,7 @@ h3 {
     height: 185px;
     justify-content: center;
     align-items: center;
-    background:
-      linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%),
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%),
       #d0e2fe;
     box-shadow: 0 55px 60px rgba(24, 51, 139, 0.12);
     transform: translateY(0);
@@ -780,8 +776,7 @@ h3 {
   grid-gap: 35px 35px;
 
   .projctcol {
-    background:
-      linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%),
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%),
       #d0e2fe;
     box-shadow: 0 55px 60px rgba(24, 51, 139, 0.12);
     border-radius: 40px;
@@ -939,12 +934,11 @@ h3 {
   &:nth-child(2) {
     .imagerectbox {
       &::after {
-        background:
-          radial-gradient(
-            53.13% 50% at 53.13% 50%,
-            #fff 0%,
-            rgba(188, 197, 255, 0.4) 100%
-          );
+        background: radial-gradient(
+          53.13% 50% at 53.13% 50%,
+          #fff 0%,
+          rgba(188, 197, 255, 0.4) 100%
+        );
       }
     }
   }
@@ -952,8 +946,7 @@ h3 {
   &:nth-child(3) {
     .imagerectbox {
       &::after {
-        background:
-          linear-gradient(
+        background: linear-gradient(
             160.21deg,
             rgba(226, 246, 255, 0.42) 5.46%,
             rgba(140, 179, 196, 0) 94.03%
@@ -970,12 +963,11 @@ h3 {
   &:nth-child(4) {
     .imagerectbox {
       &::after {
-        background:
-          radial-gradient(
-            111.11% 107.5% at 46.8% 102.95%,
-            #08e 0%,
-            rgba(124, 142, 255, 0) 100%
-          );
+        background: radial-gradient(
+          111.11% 107.5% at 46.8% 102.95%,
+          #08e 0%,
+          rgba(124, 142, 255, 0) 100%
+        );
       }
     }
   }
@@ -983,8 +975,7 @@ h3 {
   &:nth-child(5) {
     .imagerectbox {
       &::after {
-        background:
-          linear-gradient(
+        background: linear-gradient(
             194.89deg,
             #418bc0 2.13%,
             rgba(61, 119, 162, 0) 98.38%
@@ -1031,6 +1022,83 @@ h3 {
 
     .slidename {
       padding-left: 7%;
+    }
+  }
+}
+
+// contacts page
+
+// 404 page
+
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 100px 10px;
+
+  @include b(550) {
+    padding: 50px 10px;
+  }
+
+  &-title {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-size: 50px;
+    color: #18338b;
+
+    @include b(850) {
+      margin-top: 10px;
+      font-size: 30px;
+    }
+
+    @include b(550) {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+  }
+
+  &-label {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #18338b;
+
+    @include b(850) {
+      font-size: 12px;
+    }
+
+    @include b(550) {
+      font-size: 12px;
+    }
+  }
+
+  &-text {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 20px;
+    line-height: 1.5;
+    max-width: 700px;
+    width: 100%;
+    color: #000;
+
+    @include b(550) {
+      font-size: 15px;
+      margin-bottom: 15px;
+      margin-top: 15px;
+    }
+  }
+
+  &-btn {
+    margin-top: 25px;
+    font-size: 13px;
+    max-width: 250px;
+
+    @include b(550) {
+      height: 50px;
+      line-height: 50px;
+      margin-top: 25px;
     }
   }
 }

@@ -8,11 +8,14 @@ block header
   include common/header
 
 block content
-  .pagehead(style='background-image: url(img/advisory/head-bg.png)')
-    .wrapper
-      .pageheadtext
-        h1
-          | Error 404
+  .wrapper
+    .error-page
+      span.error-page-label 404: Page Not Found
+      h1.error-page-title This page could not be found!
+      p.error-page-text 
+        | We are sorry. But the page you are looking for is not available.
+        | Perhaps you can try a new search.
+      a.busbtn.error-page-btn(rel="noopener", href="/") BACK TO HOMEPAGE
 
 block footer
   include common/footer
