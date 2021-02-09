@@ -11,6 +11,7 @@ const lighthouse = require("./gulp/tasks/lighthouse");
 const svgSprite = require("./gulp/tasks/svgSprite");
 const seo = require("./gulp/tasks/seo");
 const favicons = require("./gulp/tasks/favicons");
+const plugins = require("./gulp/tasks/plugins");
 // const copyDependencies = require("./gulp/tasks/copyDependencies");
 
 const dev = gulp.parallel(
@@ -21,7 +22,8 @@ const dev = gulp.parallel(
   imageMinify,
   svgSprite,
   seo,
-  favicons
+  favicons,
+  plugins
 );
 
 // const build = gulp.series(clean, copyDependencies, dev);

@@ -1,18 +1,17 @@
-$scheme-name: 'white', 'dark';
-$scheme-icons: (('metamask', 'menu-user-profile', 'svg'));
+// $scheme-name: 'white', 'dark';
+// $scheme-icons: (('user', 'user', 'svg'));
 
 // @include themePath('dark', $scheme-icons);
-@include theme('white', $scheme-icons);
+// @include theme('white', $scheme-icons);
 
 .icon {
   &::before {
-    content: '';
+    content: "";
     display: flex;
     justify-content: center;
     align-items: center;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
   }
 
   &-flex {
@@ -27,9 +26,15 @@ $scheme-icons: (('metamask', 'menu-user-profile', 'svg'));
     }
   }
 
-  &-shrimp {
-    &::before {
-      content: '\1F990';
+  &-user {
+    @include before-img(block, 35px, 25px, r) {
+      background-image: url(../img/icons/user.svg);
+    }
+  }
+
+  &-email {
+    @include before-img(block, 35px, 25px, r) {
+      background-image: url(../img/icons/email.svg);
     }
   }
 }

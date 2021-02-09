@@ -5,6 +5,8 @@ import $ from "jquery";
 window.$ = window.jQuery = $;
 import "slick-carousel";
 
+import intlTelInput from "intl-tel-input";
+
 $(document).ready(() => {
   // eslint-disable-next-line no-console
   console.log(`document ready`);
@@ -54,4 +56,27 @@ $(document).ready(() => {
     ],
   });
   // }
+
+  if (
+    ["/contacts.html", "/contacts", "contacts"].includes(
+      window.location.pathname
+    )
+  ) {
+    const input = document.querySelector("#phone");
+
+    intlTelInput(input, {
+      utilsScript: "../plugins/input-tel/utils.js",
+      formatOnDisplay: true,
+    });
+
+    // intlTelInput(input, {
+    //   customPlaceholder: function (
+    //     selectedCountryPlaceholder,
+    //     selectedCountryData
+    //   ) {
+    //     return "e.g. " + selectedCountryPlaceholder;
+    //   },
+    //   formatOnDisplay: true,
+    // });
+  }
 });

@@ -1,0 +1,41 @@
+extends layouts/index
+
+block head
+  title Centurion Contacts
+  meta(content="Centurion Contacts page" name="description")
+
+block header
+  include common/header
+
+block content
+  .page
+    .page-head-bg(style='background-image: url(img/contacts/contacts-bg.jpg)')
+      .page-container
+        h1.page-title Contact
+    .page-container
+      .contact-page
+        .contact-block-text
+          | Centurion Global Limited 
+          br
+          | Harneys Services (Cayman Limited)
+          br
+          | 4th Floor, Harbour Place, 103 South Church Street
+          br
+          | Grand Cayman
+          br
+          | PO Box 10240, KY1-1002
+          br
+          | Cayman Islands
+        form.contact-block-form
+          span.contact-block-form-title Contact us for more details
+          .contact-block-form-field.icon.icon-user
+            input(type="text", name="name", placeholder="Your name", required)
+          .contact-block-form-field
+            input#phone(type="tel", name="tel", required)
+          .contact-block-form-field.icon.icon-email
+            input(type="email", name="email", placeholder="Your email", required)
+          textarea.contact-block-form-field(name="message", cols="30", rows="7", placeholder="Your message", required)
+          button.busbtn.error-page-btn(type="submit") ENQUIRY
+
+block footer
+  include common/footer
