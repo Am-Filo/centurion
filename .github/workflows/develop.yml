@@ -85,7 +85,7 @@ jobs:
         with:
           switches: ${{ secrets.DEPLOY_TEST_SWITCHES }}
           path: ./${{ secrets.PROJECT_BUILD_NAME }}/
-          remote_path: ${{ secrets.DEPLOY_TEST_PATH }}/${{ secrets.PROJECT_BUILD_NAME }}
+          remote_path: /../${{ secrets.DEPLOY_TEST_PATH }}/${{ secrets.PROJECT_BUILD_NAME }}/
           remote_host: ${{ secrets.DEPLOY_TEST_HOST }}
           remote_port: ${{ secrets.DEPLOY_TEST_PORT }}
           remote_user: ${{ secrets.DEPLOY_TEST_USER }}
